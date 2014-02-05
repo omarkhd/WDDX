@@ -1,0 +1,45 @@
+{
+    "name": "WDDX",
+    "version": "0.0.1",
+    "description": "Node.js WDDX",
+    "homepage": "https://github.com/SimasGodovan/WDDX",
+    "author": {
+        "name": "Simas Godovan",
+        "email": "simas@godovan.lt",
+        "url": "http://simas.godovan.lt"
+    },
+    "main": "./lib/wddx",
+    "directories": {
+        "lib": "./lib"
+    },
+    "scripts": {
+        "test": "nodeunit test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/SimasGodovan/WDDX"
+    },
+    "readmeFilename": "README.md",
+    "bugs": {
+        "url": "https://github.com/SimasGodovan/WDDX/issues"
+    },
+    "dependencies": {
+        "xml2js": "*"
+    },
+    "devDependencies": {
+        "nodeunit": "*"
+    },
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "keywords": [
+        "xml",
+        "wddx"
+    ],
+    "licenses": [
+        {
+            "type": "BSD-new",
+            "url": "https://raw.github.com/SimasGodovan/WDDX/master/LICENSE"
+        }
+    ]
+}
