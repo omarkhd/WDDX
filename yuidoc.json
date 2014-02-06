@@ -1,0 +1,13 @@
+{
+    "name": "WDDX",
+    "description": "Web Distributed Data eXchange",
+    "version": "0.0.1-alpha",
+    "url": "https://github.com/SimasGodovan/WDDX",
+    "options": {
+        "linkNatives": "true",
+        "paths": [
+            "./lib"
+        ],
+        "outdir": "./doc"
+    }
+}
