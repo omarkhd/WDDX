@@ -22,7 +22,7 @@ docview: doc ;@echo "Launching doc viewer on 8080 for ${PROJECT}....."; \
 	./node_modules/.bin/http-server ./doc;
 
 clean: ;@echo "Taking out ${PROJECT} garbage....."; \
-	rm -rf node_modules doc
+	rm -rf node_modules doc *.tgz
 
 pack: ;@echo "Creating ${PROJECT} package....."; \
 	npm pack
