@@ -1,6 +1,8 @@
 WDDX
 ====
 
+[![Build Status](https://travis-ci.org/SimasGodovan/WDDX.png?branch=master)](https://travis-ci.org/SimasGodovan/WDDX)
+
 From [Wikipedia WDDX](http://en.wikipedia.org/wiki/WDDX):
 > WDDX (Web Distributed Data eXchange) is a programming language-, platform- and transport-neutral data interchange
 > mechanism to pass data between different environments and different computers. It supports simple data types
