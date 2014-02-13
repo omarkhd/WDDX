@@ -28,6 +28,11 @@ make test
 make doc
 ```
 
+## View API documentation (http://localhost:8080)
+```
+make docview
+```
+
 ## Create package
 ```
 make pack

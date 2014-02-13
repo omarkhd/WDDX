@@ -1,6 +1,6 @@
 {
     "name": "wddx",
-    "version": "0.0.1-alpha",
+    "version": "0.0.1-prototype",
     "description": "Web Distributed Data eXchange",
     "homepage": "https://github.com/SimasGodovan/WDDX",
     "author": {
@@ -28,7 +28,8 @@
     },
     "devDependencies": {
         "nodeunit": "*",
-        "yuidocjs": "*"
+        "yuidocjs": "*",
+        "http-server": "*"
     },
     "engines": {
         "node": ">=0.10.0"
