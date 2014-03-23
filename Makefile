@@ -13,6 +13,7 @@ update:
 	npm update
 
 doc:
+	rm -rf doc
 	$(BIN)/yuidoc
 
 docview: doc
