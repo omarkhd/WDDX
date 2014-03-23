@@ -1,30 +1,27 @@
-PROJECT = "WDDX"
+BIN = ./node_modules/.bin
 
 all: clean install test
 
-test: ;@echo "Testing ${PROJECT}....."; \
-	export NODE_PATH=.; \
-	./node_modules/.bin/nodeunit test
+test:
+	$(BIN)/nodeunit test
 
-install: ;@echo "Installing ${PROJECT}....."; \
+install:
 	npm install
  
-update: ;@echo "Updating ${PROJECT}....."; \
-	git pull --rebase; \
+update:
+	git pull --rebase
 	npm update
 
-doc: ;@echo "Generating API documentation for ${PROJECT}....."; \
-	export NODE_PATH=.; \
-	./node_modules/.bin/yuidoc;
+doc:
+	$(BIN)/yuidoc
 
-docview: doc ;@echo "Launching doc viewer on 8080 for ${PROJECT}....."; \
-	export NODE_PATH=.; \
-	./node_modules/.bin/http-server ./doc;
+docview: doc
+	$(BIN)/http-server ./doc
 
-clean: ;@echo "Taking out ${PROJECT} garbage....."; \
+clean:
 	rm -rf node_modules doc *.tgz
 
-pack: ;@echo "Creating ${PROJECT} package....."; \
+pack:
 	npm pack
 
 .PHONY: test install clean update doc pack docview
