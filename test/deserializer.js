@@ -1,19 +1,71 @@
-var Deserializer = require('../lib/wddx/deserializer.js');
+'use strict';
 
-exports.options = function (test) {
-    'use strict';
+var assert = require('assert');
 
-    var a = new Deserializer();
+suite('Deserializer', function () {
 
-    test.ok(typeof a.getOptions() === 'object', 'Deserializer options should be type of Object');
-    test.equals(a.getOption('undefinedOption'), undefined, 'Undefined option should return undefined result');
+    var Deserializer = require('../lib/wddx/deserializer.js');
 
-    a.setOptions({
-        optionalOption: true
+    suite('options', function () {
+
+        var a = new Deserializer();
+
+        test('is options a real object', function () {
+
+            assert.ok(!!a.getOptions() && a.getOptions().constructor === Object);
+        });
+
+        test('undefined option undefined result', function () {
+
+            assert.equal(a.getOption('undefinedOption'), undefined);
+        });
+
+        a.setOptions({
+            optionalOption: true
+        });
+
+        test('set simple option', function () {
+
+            assert.equal(a.getOptions().optionalOption, true);
+        });
+
+        test('fetch option by key', function () {
+
+            assert.equal(a.getOption('optionalOption'), true);
+        });
+
+        a.setOptions({
+            nested: {
+                optionA: true,
+                optionB: {
+                    optionC: false
+                }
+            }
+        });
+
+        test('options are overwritten correctly', function () {
+
+            assert.equal(a.getOption('optionalOption'), true);
+        });
+
+        test('can set nested options', function () {
+
+            assert.equal(a.getOptions().nested.optionA, true);
+        });
+
+        test('get nested object with dot nation', function () {
+
+            assert.equal(a.getOption('nested.optionB.optionC'), false);
+        });
+
+        test('original options stay immutable', function () {
+
+            assert.equal(a.getOptions().nested.optionB.optionC, a.getOption('nested.optionB.optionC'));
+        });
+
+        test('original options stay immutable', function () {
+
+            assert.deepEqual(a.getOption('nested.optionB'), {optionC: false});
+        });
     });
-
-    test.equals(a.getOptions().optionalOption, true, 'Unable to set deserializer options');
-    test.equals(a.getOption('optionalOption'), true, 'Getting option by key, should return value only');
-
-    test.done();
-};
+});

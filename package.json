@@ -15,6 +15,12 @@
     "scripts": {
         "test": "make test"
     },
+    "config": {
+        "blanket": {
+            "pattern": "lib",
+            "data-cover-never": "node_modules"
+        }
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/SimasGodovan/WDDX"
@@ -24,10 +30,14 @@
         "url": "https://github.com/SimasGodovan/WDDX/issues"
     },
     "dependencies": {
-        "xml2js": "*"
+        "xml2js": "*",
+        "deepmerge": "*"
     },
     "devDependencies": {
-        "nodeunit": "*",
+        "mocha": "*",
+        "mocha-lcov-reporter": "*",
+        "blanket": "*",
+        "coveralls": "*",
         "yuidocjs": "*",
         "http-server": "*"
     },

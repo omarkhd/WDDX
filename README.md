@@ -2,6 +2,7 @@ WDDX
 ====
 
 [![Build Status](https://travis-ci.org/SimasGodovan/WDDX.png?branch=master)](https://travis-ci.org/SimasGodovan/WDDX)
+[![Coverage Status](https://coveralls.io/repos/SimasGodovan/WDDX/badge.png)](https://coveralls.io/r/SimasGodovan/WDDX)
 
 From [Wikipedia WDDX](http://en.wikipedia.org/wiki/WDDX):
 > WDDX (Web Distributed Data eXchange) is a programming language-, platform- and transport-neutral data interchange
@@ -32,7 +33,17 @@ make doc
 
 ## View API documentation (http://localhost:8080)
 ```
-make docview
+make doc-view
+```
+
+## Create coverage report
+```
+make coverage
+```
+
+## View coverage report (http://localhost:8081)
+```
+make coverage-view
 ```
 
 ## Create package
