@@ -4,11 +4,10 @@ var assert = require('assert');
 
 suite('Deserializer', function () {
 
-    var Deserializer = require('../lib/wddx/deserializer.js');
+    var Deserializer = require('../lib/wddx/deserializer.js'),
+        a = new Deserializer();
 
     suite('options', function () {
-
-        var a = new Deserializer();
 
         test('is options a real object', function () {
 
@@ -18,6 +17,7 @@ suite('Deserializer', function () {
         test('undefined option undefined result', function () {
 
             assert.equal(a.getOption('undefinedOption'), undefined);
+            assert.equal(a.getOption(''), undefined);
         });
 
         a.setOptions({
@@ -66,6 +66,46 @@ suite('Deserializer', function () {
         test('original options stay immutable', function () {
 
             assert.deepEqual(a.getOption('nested.optionB'), {optionC: false});
+        });
+    });
+
+    suite('process', function () {
+
+        test('packet string is validated', function () {
+
+            assert.equal(a.deserialize(''), null);
+        });
+
+        test('object is returned', function () {
+
+            assert.ok(!!a.deserialize('<WDDX />') && a.deserialize('<WDDX />').constructor === Object);
+        });
+    });
+
+    suite('multipleInstances', function () {
+
+        var b = new Deserializer(),
+            c = new Deserializer();
+
+        b.setOptions({
+            optionA: true,
+            optionB: false
+        });
+
+        test('b options do not interfere with c options', function () {
+
+            assert.equal(c.getOption('optionA'), undefined);
+            assert.deepEqual(c.getOptions(), {});
+
+            c.setOptions({
+                optionC: false,
+                optionD: true
+            });
+        });
+
+        test('b and c are not equal', function () {
+
+            assert.notDeepEqual(b, c);
         });
     });
 });
