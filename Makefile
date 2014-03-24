@@ -1,6 +1,6 @@
 BIN = ./node_modules/.bin
 
-all: clean install test
+all: strip install test
 
 test:
 	$(BIN)/mocha --ui tdd --reporter nyan
@@ -36,9 +36,12 @@ doc-view: doc
 	$(BIN)/http-server ./doc
 
 clean: coverage-clean
-	rm -rf node_modules doc *.tgz npm-debug.log
+	rm -rf doc *.tgz npm-debug.log
+
+reset: clean
+	rm -rf node_modules
 
 pack:
 	npm pack
 
-.PHONY: coverage coverage-view coverage-clean coveralls test test-watch install clean update doc pack doc-view
+.PHONY: coverage coverage-view coverage-clean coveralls test test-watch install clean update doc reset pack doc-view
