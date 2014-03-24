@@ -1,6 +1,10 @@
 'use strict';
 
-var assert = require('assert');
+var assert = require('assert'),
+    fs = require('fs'),
+    path = require('path'),
+    fixtures = path.dirname(__filename) + '/fixtures',
+    simplePacket = fs.readFileSync(fixtures + '/wddx.simple.xml').toString();
 
 suite('Deserializer', function () {
 
@@ -69,7 +73,7 @@ suite('Deserializer', function () {
         });
     });
 
-    suite('process', function () {
+    suite('packetValidation', function () {
 
         test('packet string is validated', function () {
 
@@ -78,7 +82,7 @@ suite('Deserializer', function () {
 
         test('object is returned', function () {
 
-            assert.ok(!!a.deserialize('<WDDX />') && a.deserialize('<WDDX />').constructor === Object);
+            assert.ok(!!a.deserialize(simplePacket) && a.deserialize(simplePacket).constructor === Object);
         });
     });
 

@@ -3,6 +3,8 @@ WDDX
 
 [![Build Status](https://travis-ci.org/SimasGodovan/WDDX.png?branch=master)](https://travis-ci.org/SimasGodovan/WDDX)
 [![Coverage Status](https://coveralls.io/repos/SimasGodovan/WDDX/badge.png)](https://coveralls.io/r/SimasGodovan/WDDX)
+[![Dependency Status](https://david-dm.org/SimasGodovan/WDDX.png)](https://david-dm.org/SimasGodovan/WDDX)
+[![Dev-dependency Status](https://david-dm.org/SimasGodovan/WDDX/dev-status.png)](https://david-dm.org/SimasGodovan/WDDX#info=devDependencies)
 
 From [Wikipedia WDDX](http://en.wikipedia.org/wiki/WDDX):
 > WDDX (Web Distributed Data eXchange) is a programming language-, platform- and transport-neutral data interchange
