@@ -11,42 +11,21 @@ From [Wikipedia WDDX](http://en.wikipedia.org/wiki/WDDX):
 > recordsets (row/column data, typically coming from database queries). There are WDDX interfaces for a wide
 > variety of languages, including ColdFusion, Ruby, Python, PHP, Java, C++, .NET, Actionscript, lisp, Haskell, Perl.
 
-## Install
+## make
 ```
-make all
-```
-
-## Update
-```
-make update
-```
-
-## Test
-```
-make test
-```
-
-## Generate API documentation
-```
-make doc
-```
-
-## View API documentation (http://localhost:8080)
-```
-make doc-view
-```
-
-## Create coverage report
-```
-make coverage
-```
-
-## View coverage report (http://localhost:8081)
-```
-make coverage-view
-```
-
-## Create package
-```
-make pack
+make all            - reset and install production packages
+make all-dev        - reset and install development packages
+make test           - run tests
+make test-watch     - run tests (watch for test suite changes)
+make coverage       - run tests with coverage report
+make coverage-clean - remove coverage report
+make coverage-view  - start coverage report preview on http://localhost:8081
+make coveralls      - push coverage report to coveralls (done by travis-ci)
+make install        - install production packages
+make install-dev    - install development packages
+make update         - fetch newest version from repository and update packages
+make doc            - create API documentation
+make dov-view       - start API documentation preview on http://localhost:8080
+make clean          - cleanup
+make reset          - reset package to original state
 ```

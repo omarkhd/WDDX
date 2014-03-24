@@ -1,7 +1,7 @@
 {
     "name": "WDDX",
     "description": "Web Distributed Data eXchange",
-    "version": "0.0.2-prototype",
+    "version": "0.0.3-prototype",
     "url": "https://github.com/SimasGodovan/WDDX",
     "options": {
         "linkNatives": "true",

@@ -1,6 +1,8 @@
 BIN = ./node_modules/.bin
 
-all: strip install test
+all: reset install
+
+all-dev: reset install-dev test
 
 test:
 	$(BIN)/mocha --ui tdd --reporter nyan
@@ -22,8 +24,11 @@ coveralls:
 	$(BIN)/mocha --ui tdd --require blanket --reporter mocha-lcov-reporter | $(BIN)/coveralls
 
 install:
+	npm install --production
+
+install-dev:
 	npm install
- 
+
 update:
 	git pull --rebase
 	npm update
@@ -41,7 +46,4 @@ clean: coverage-clean
 reset: clean
 	rm -rf node_modules
 
-pack:
-	npm pack
-
-.PHONY: coverage coverage-view coverage-clean coveralls test test-watch install clean update doc reset pack doc-view
+.PHONY: all all-dev test test-watch coverage coverage-clean coverage-view coveralls install install-dev update doc doc-view clean reset
