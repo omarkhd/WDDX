@@ -20,8 +20,8 @@ suite('Deserializer', function () {
 
         test('undefined option undefined result', function () {
 
-            assert.equal(a.getOption('undefinedOption'), undefined);
-            assert.equal(a.getOption(''), undefined);
+            assert.strictEqual(a.getOption('undefinedOption'), undefined);
+            assert.strictEqual(a.getOption(''), undefined);
         });
 
         a.setOptions({
@@ -30,12 +30,12 @@ suite('Deserializer', function () {
 
         test('set simple option', function () {
 
-            assert.equal(a.getOptions().optionalOption, true);
+            assert.strictEqual(a.getOptions().optionalOption, true);
         });
 
         test('fetch option by key', function () {
 
-            assert.equal(a.getOption('optionalOption'), true);
+            assert.strictEqual(a.getOption('optionalOption'), true);
         });
 
         a.setOptions({
@@ -49,22 +49,22 @@ suite('Deserializer', function () {
 
         test('options are overwritten correctly', function () {
 
-            assert.equal(a.getOption('optionalOption'), true);
+            assert.strictEqual(a.getOption('optionalOption'), true);
         });
 
         test('can set nested options', function () {
 
-            assert.equal(a.getOptions().nested.optionA, true);
+            assert.strictEqual(a.getOptions().nested.optionA, true);
         });
 
         test('get nested object with dot nation', function () {
 
-            assert.equal(a.getOption('nested.optionB.optionC'), false);
+            assert.strictEqual(a.getOption('nested.optionB.optionC'), false);
         });
 
         test('original options stay immutable', function () {
 
-            assert.equal(a.getOptions().nested.optionB.optionC, a.getOption('nested.optionB.optionC'));
+            assert.strictEqual(a.getOptions().nested.optionB.optionC, a.getOption('nested.optionB.optionC'));
         });
 
         test('original options stay immutable', function () {
@@ -77,12 +77,30 @@ suite('Deserializer', function () {
 
         test('packet string is validated', function () {
 
-            assert.equal(a.deserialize(''), null);
+            assert.strictEqual(a.deserialize(''), null);
         });
 
         test('object is returned', function () {
 
             assert.ok(!!a.deserialize(simplePacket) && a.deserialize(simplePacket).constructor === Object);
+        });
+    });
+
+    suite('packet deserialization', function () {
+
+        test('simple packet', function () {
+
+            var packet = a.deserialize(simplePacket);
+
+            assert.strictEqual(packet.version, '1.0');
+            assert.strictEqual(packet.header.comment, 'Simple example');
+            assert.strictEqual(packet.data.pi, '3.1415926');
+
+            /** @namespace packet.data.cities */
+            assert.strictEqual(packet.data.cities.length, 3);
+            assert.strictEqual(packet.data.cities[0], 'Austin');
+            assert.strictEqual(packet.data.cities[1], 'Denver');
+            assert.strictEqual(packet.data.cities[2], 'Seattle');
         });
     });
 
@@ -98,7 +116,7 @@ suite('Deserializer', function () {
 
         test('b options do not interfere with c options', function () {
 
-            assert.equal(c.getOption('optionA'), undefined);
+            assert.strictEqual(c.getOption('optionA'), undefined);
             assert.deepEqual(c.getOptions(), {});
 
             c.setOptions({
