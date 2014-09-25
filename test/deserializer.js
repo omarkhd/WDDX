@@ -75,33 +75,47 @@ suite('Deserializer', function () {
 
     suite('packetValidation', function () {
 
-        test('packet string is validated', function () {
+        test('packet string is validated', function (done) {
 
-            assert.strictEqual(a.deserialize(''), null);
+            a.deserialize('', function(error, packet) {
+                if(error) throw error;
+                assert.strictEqual(packet, null);
+
+                done();
+            });
         });
 
-        test('object is returned', function () {
+        test('object is returned', function (done) {
 
-            assert.ok(!!a.deserialize(simplePacket) && a.deserialize(simplePacket).constructor === Object);
+            a.deserialize(simplePacket, function(error, packet) {
+                if(error) throw error;
+                assert.ok(!!packet && packet.constructor === Object);
+
+                done();
+            });
         });
     });
 
     suite('packet deserialization', function () {
 
-        test('simple packet', function () {
+        test('simple packet', function (done) {
 
-            var packet = a.deserialize(simplePacket);
+            a.deserialize(simplePacket, function(error, packet) {
+                if(error) throw error;
 
-            assert.strictEqual(packet.version, '1.0');
-            assert.strictEqual(packet.header.comment, 'Simple example');
-            assert.strictEqual(packet.data.pi > 3.14 && packet.data.pi < 3.15, true);
+                assert.strictEqual(packet.version, '1.0');
+                assert.strictEqual(packet.header.comment, 'Simple example');
+                assert.strictEqual(packet.data.pi > 3.14 && packet.data.pi < 3.15, true);
 
-            /** @namespace packet.data.cities */
-            assert.strictEqual(packet.data.cities.length, 4);
-            assert.strictEqual(packet.data.cities[0], 'Austin');
-			assert.strictEqual(packet.data.cities[1], 'Denver');
-			assert.strictEqual(packet.data.cities[2], 42);
-            assert.strictEqual(packet.data.cities[3], 'Seattle');
+                /** @namespace packet.data.cities */
+                assert.strictEqual(packet.data.cities.length, 4);
+                assert.strictEqual(packet.data.cities[0], 'Austin');
+                assert.strictEqual(packet.data.cities[1], 'Denver');
+                assert.strictEqual(packet.data.cities[2], 42);
+                assert.strictEqual(packet.data.cities[3], 'Seattle');
+
+                done();
+            });
         });
     });
 

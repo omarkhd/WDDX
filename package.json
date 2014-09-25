@@ -1,6 +1,6 @@
 {
     "name": "wddx",
-    "version": "0.0.3-prototype",
+    "version": "0.0.4-prototype",
     "description": "Web Distributed Data eXchange",
     "homepage": "https://github.com/SimasGodovan/WDDX",
     "author": {
@@ -30,8 +30,8 @@
         "url": "https://github.com/SimasGodovan/WDDX/issues"
     },
     "dependencies": {
-        "xml2js": "*",
-        "deepmerge": "*"
+        "deepmerge": "*",
+        "xamel": "*"
     },
     "devDependencies": {
         "mocha": "*",
