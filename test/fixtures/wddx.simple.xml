@@ -9,6 +9,7 @@
                 <array length="3">
                     <string>Austin</string>
                     <string>Denver</string>
+                    <number>42</number>
                     <string>Seattle</string>
                 </array>
             </var>

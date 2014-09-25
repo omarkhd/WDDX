@@ -94,13 +94,14 @@ suite('Deserializer', function () {
 
             assert.strictEqual(packet.version, '1.0');
             assert.strictEqual(packet.header.comment, 'Simple example');
-            assert.strictEqual(packet.data.pi, '3.1415926');
+            assert.strictEqual(packet.data.pi > 3.14 && packet.data.pi < 3.15, true);
 
             /** @namespace packet.data.cities */
-            assert.strictEqual(packet.data.cities.length, 3);
+            assert.strictEqual(packet.data.cities.length, 4);
             assert.strictEqual(packet.data.cities[0], 'Austin');
-            assert.strictEqual(packet.data.cities[1], 'Denver');
-            assert.strictEqual(packet.data.cities[2], 'Seattle');
+			assert.strictEqual(packet.data.cities[1], 'Denver');
+			assert.strictEqual(packet.data.cities[2], 42);
+            assert.strictEqual(packet.data.cities[3], 'Seattle');
         });
     });
 
